@@ -1,0 +1,23 @@
+## Intro
+
+Types of CRLs:
+
+- Base CRLs
+- Delta CRLs
+- Partitioned CRLs
+  Via Issuing Distribution Point (IDP) extension, onlyContainsUsersCerts and onlyContainsCACerts fileds去识别对应的CRLs
+
+## Components Used  for Certs Status Checking
+
+- CryptoAPI
+- Certificates
+- Certificate Stores
+  Run ***certmrg.msc*** 
+
+
+
+## Certificate Revocation Lists
+
+A CRL是一个文件，由CA创建并签名，包含了被创建并被revoked证书的Serial Numbers.
+
+![image-20220724141852452](C:\Users\dddih\AppData\Roaming\Typora\typora-user-images\image-20220724141852452.png)

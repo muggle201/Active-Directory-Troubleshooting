@@ -16,7 +16,7 @@
 CryptoAPI尝试建立所有可能的Certificate Chain，并从以下位置获得certificate：
 
 - Application提供，一些application可能预载所有证书并分发给client
-- 已被certificate validation engine （Crypt32.dll）缓存的一组certificates
+- 已被certificate validation engine （Crypt32.dll）cache的一组certificates
 - 本地certificates，并包含通过group policy发布的certificate。
 - CrptoAPI缓存在本地磁盘的certificate
 - 通过AIA extension标注的位置，从网络获取。
