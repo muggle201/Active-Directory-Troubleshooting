@@ -140,7 +140,7 @@ AD中的samAccountName
 
 Requestname = "Domain\username"
 
-#### Subject
+####  Subject
 
 Subject = CN=computer01.contoso.com
 
@@ -157,10 +157,10 @@ Subject = CN=Jow,CN=Users,DC=Contoso,DC=com
 
 **Certificates验证过程**
 
-- Certificate Discoveriy
+- Certificate Discovery
   从Group Policy，Enterprise Policy，AIA等收集certificates
 - Path Validation
-  检查路径所有certifacate直到root CA certificate
+  检查路径所有certificate直到root CA certificate
 - Revocation Checking
   确认每个certificate不在CRL中
 

@@ -5,7 +5,7 @@ Types of CRLs:
 - Base CRLs
 - Delta CRLs
 - Partitioned CRLs
-  Via Issuing Distribution Point (IDP) extension, onlyContainsUsersCerts and onlyContainsCACerts fileds去识别对应的CRLs
+  Via Issuing Distribution Point (IDP) extension, onlyContainsUsersCerts and onlyContainsCACerts fields去识别对应的CRLs
 
 ## Components Used  for Certs Status Checking
 
@@ -61,7 +61,7 @@ A CRL是一个文件，由CA创建并签名，包含了被创建并被revoked证
 
 ### CRL Creation
 
-每个Revoked certs的serial number都将存于CA数据库中，并称为CRL的一部分，直到过期。一般而言，revoked且expired cert将在CRL额外保存一个interval直到client检测到expired，因此也不必检测expired cert的revocation。
+每个Revoked certs的serial number都将存于CA数据库中，并成为CRL的一部分，直到过期。一般而言，revoked且expired cert将在CRL额外保存一个interval直到client检测到expired，因此也不必检测expired cert的revocation。
 
 若组织希望在CRL中一直保留revoked certificate无论是否expired，运行以下命令：
 
@@ -81,7 +81,14 @@ Delta CRLs则是发布自从上次发布base CRL后revoked certificates。客户
 
 > delta CRLs间隔应大于AD中Configuration NC复制到全部DC所需时间。
 
-Delta CRL与下载base CRLs并不冲突。Base CRL在初始化阶段，及过期快过期是，必须下载。Delta CRL也会要求client来下载base CRL以获取更精准的参考。
+Delta CRL与下载base CRLs并不冲突。Base CRL在初始化阶段，及过期或快过期时，必须下载。Delta CRL也会要求client来下载base CRL以获取更精准的参考。
+
+##### Delta CRL Extension
+
+- **Delta CRL Indicator**	能接受的最早base CRL，若没有则CryptoAPI将尝试获取新base CRL。
+- **Certificate Hold Processing**	若一个被revoked的Cert的status为*CertificateHold*，则需要一项”RemovedFromCRL“，以表明存在于base CRL中的一项将被un-revoked。
+- **Distribution Point Name**	若该值与subject certificate中CDP Extension匹配，则该CRL被认为有效。
+- 
 
 
 
